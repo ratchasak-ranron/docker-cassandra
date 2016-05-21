@@ -1,0 +1,18 @@
+cassandra1:
+  image: cassandra:latest
+  container_name: cassandra1
+  restart: always
+  volumes:
+    - "/Users/ratchasak/Workspace/hospital/refrigensor/refrigensor_web/db:/home/docker"
+
+cassandra2:
+  image: cassandra:latest
+  container_name: cassandra2
+  restart: always
+  ports:
+    - "7002-7003:7000-7001"
+    - "7200:7199"
+    - "9043:9042"
+    - "9161:9160"
+  links:
+    - cassandra1:cassandra
